@@ -1,3 +1,4 @@
+#!/bin/bash
 cat <<EOF >> /etc/vim/vimrc
 set nu hls si
 set ignorecase
