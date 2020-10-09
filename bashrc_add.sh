@@ -1,3 +1,4 @@
+#!/bin/bash
 cat <<EOF >> /etc/bash.bashrc
 export HISTTIMEFORMAT="%y/%m/%d %T "
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo"
