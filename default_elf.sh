@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "3" | update-alternative --config editor
+echo "3" | update-alternatives --config editor
