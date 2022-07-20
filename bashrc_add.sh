@@ -1,4 +1,10 @@
 #!/bin/bash
+if [ -f /dev/hwrng ];then
+    RAND_GEN="/dev/hwrng"
+else
+    RAND_GEN="/dev/urandom"
+fi
+
 cat <<EOF >> /etc/bash.bashrc
 export HISTTIMEFORMAT="%y/%m/%d %T "
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo"
@@ -27,7 +33,7 @@ alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^
 diskusg() { du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", \$1>=2**30? (\$1/2**30, "G"): \$1>=2**20? (\$1/2**20, "M"): \$1>=2**10? (\$1/2**10, "K"): (\$1, "") }e'|column -t;}
 alias meminfo='free -m -l -t'
 alias ps?="ps -ef|grep"
-alias busy="cat /dev/hwrng| hexdump -C | grep 'ca fe'"
+alias busy="cat $RAND_GEN| hexdump -C | grep 'ca fe'"
 alias wttr="curl wttr.in"
 alias ll='ls -lF --color=auto'
 alias la='ls -la --color=auto'
