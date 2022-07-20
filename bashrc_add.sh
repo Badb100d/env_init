@@ -1,5 +1,6 @@
 #!/bin/bash
-if [ -f /dev/hwrng ];then
+# check if character special file hwrng exists.
+if [ -c /dev/hwrng ];then
     RAND_GEN="/dev/hwrng"
 else
     RAND_GEN="/dev/urandom"
@@ -7,7 +8,7 @@ fi
 
 cat <<EOF >> /etc/bash.bashrc
 export HISTTIMEFORMAT="%y/%m/%d %T "
-alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo"
+alias genpasswd="strings $RAND_GEN | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo"
 extract() {
          if [ -f \$1 ] ; then
                  case \$1 in
