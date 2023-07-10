@@ -39,7 +39,7 @@ alias ps?="ps -ef|grep"
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'"
 alias wttr="curl wttr.in"
 alias ll='ls -lF --color=auto'
-alias la='ls -la --color=auto'
+alias la='ls -lA --color=auto'
 alias grep='grep --color=auto'
 alias vim='vim -b'
 EOF
