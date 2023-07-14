@@ -11,6 +11,9 @@ fi
 cat <<EOF >> /etc/bash.bashrc
 export HISTTIMEFORMAT="%y/%m/%d %T "
 $GENPASSWD
+catmd() {
+    pandoc \$1 | lynx -stdin
+}
 extract() {
          if [ -f \$1 ] ; then
                  case \$1 in
