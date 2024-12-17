@@ -1,10 +1,12 @@
 #!/bin/bash
 # check if character special file hwrng exists.
-if [ -c /dev/hwrng ];then
-    GENPASSWD="[ 0 -eq \$(id -u) ] && alias genpasswd=\"strings /dev/hwrng | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo\" || alias genpasswd=\"strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo\""
-else
-    GENPASSWD="alias genpasswd=\"strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo\""
-fi
+#if [ -c /dev/hwrng ];then
+#    GENPASSWD="[ 0 -eq \$(id -u) ] && alias genpasswd=\"strings /dev/hwrng | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo\" || alias genpasswd=\"strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo\""
+#else
+#    GENPASSWD="alias genpasswd=\"strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo\""
+#fi
+GENPASSWD="alias genpasswd=\"strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n';echo\""
+
 #DOCKER_RC="if [ \$\$ == 1 ]; then
 #    nohup /etc/rc.local  >>/var/log/rc.log 2>&1 &
 #fi"
